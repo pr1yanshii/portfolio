@@ -1,0 +1,29 @@
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.muted {
+  color: var(--ink-2);
+}
+.arrow {
+  display: inline-block;
+  transition: transform var(--dur) var(--ease-expo);
+}
+.link:hover .arrow,
+.link:focus-visible .arrow {
+  transform: translateX(4px);
+}
+.link[data-dir='up-right']:hover .arrow,
+.link[data-dir='up-right']:focus-visible .arrow {
+  transform: translate(3px, -3px);
+}
+.link[data-dir='down']:hover .arrow,
+.link[data-dir='down']:focus-visible .arrow {
+  transform: translateY(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .arrow { transition: none; }
+}

@@ -1,0 +1,61 @@
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #f3f1eb;
+  color: #171716;
+  display: grid;
+  place-items: center;
+  transition: transform 560ms var(--ease-expo);
+  will-change: transform;
+}
+.curtain[data-phase='3'] {
+  transform: translateY(-100%);
+}
+
+.mark {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  overflow: hidden;
+  padding: 0.1em 0;
+}
+
+/* P, S and the dot rise in from below */
+.letter,
+.dot {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 520ms var(--ease-expo);
+}
+.curtain:not([data-phase='0']) .letter,
+.curtain:not([data-phase='0']) .dot {
+  transform: none;
+}
+.dot {
+  transition-delay: 80ms;
+}
+
+/* The folded letters unfold in phase 2; the dot leaves */
+.fold {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  transition: max-width 380ms var(--ease-in-out), opacity 260ms ease 60ms;
+}
+.curtain[data-phase='2'] .fold,
+.curtain[data-phase='3'] .fold {
+  max-width: 5em;
+  opacity: 1;
+}
+.curtain[data-phase='2'] .dot,
+.curtain[data-phase='3'] .dot {
+  opacity: 0;
+  transform: translateX(-0.2em);
+  transition: opacity 180ms ease, transform 300ms var(--ease-in-out);
+}

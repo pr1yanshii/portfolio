@@ -1,0 +1,74 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 240ms ease;
+  will-change: transform;
+}
+.cursor[data-visible='true'] {
+  opacity: 1;
+}
+
+/* The dot: white in difference blend → reads as ink on ivory, ivory on charcoal */
+.dot {
+  grid-area: 1 / 1;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+  transition: transform 420ms var(--ease-expo), opacity 240ms ease;
+}
+.cursor[data-down='true'] .dot {
+  transform: scale(0.6);
+}
+
+/* "View" disc */
+.label,
+.arrow {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-micro);
+  text-transform: uppercase;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 460ms var(--ease-expo), opacity 240ms ease,
+    background-color var(--dur-theme) var(--ease-in-out), color var(--dur-theme) var(--ease-in-out);
+}
+.label {
+  width: 76px;
+  height: 76px;
+}
+.arrow {
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.cursor[data-mode='view'] .label,
+.cursor[data-mode='ext'] .arrow {
+  transform: scale(1);
+  opacity: 1;
+}
+.cursor[data-mode='view'] .dot,
+.cursor[data-mode='ext'] .dot {
+  opacity: 0;
+}
+.cursor[data-mode='view'][data-down='true'] .label,
+.cursor[data-mode='ext'][data-down='true'] .arrow {
+  transform: scale(0.9);
+}

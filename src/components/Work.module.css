@@ -1,0 +1,7 @@
+.section {
+  padding-block: var(--section-y) var(--s-10);
+}
+.list {
+  display: flex;
+  flex-direction: column;
+}

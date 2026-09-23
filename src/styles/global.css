@@ -1,0 +1,206 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  transition:
+    background-color var(--dur-theme) var(--ease-in-out),
+    color var(--dur-theme) var(--ease-in-out);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* Lenis handles smoothness */
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--ink);
+}
+
+h1, h2, h3, h4, p, ul, ol, figure {
+  margin: 0;
+}
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 1.5px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Custom cursor is active: hide the native one on precise pointers only */
+html[data-cursor='on'] body,
+html[data-cursor='on'] a,
+html[data-cursor='on'] button {
+  cursor: none;
+}
+
+/* ---------- shared primitives ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+
+.micro {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: var(--tracking-micro);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  line-height: 1.3;
+}
+
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+  transition: border-color var(--dur-theme) var(--ease-in-out);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Animated underline — a hairline that draws in from the left */
+.u-link {
+  position: relative;
+  display: inline-block;
+}
+.u-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.15em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur) var(--ease-expo);
+}
+.u-link:hover::after,
+.u-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- reveal system (CSS-driven, toggled by IntersectionObserver) ---------- */
+
+[data-reveal] {
+  --reveal-delay: 0ms;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--dur-slow) var(--ease-expo) var(--reveal-delay),
+    transform var(--dur-slow) var(--ease-expo) var(--reveal-delay);
+  will-change: opacity, transform;
+}
+[data-reveal='in'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Line-mask reveal: each line clips from below */
+[data-reveal-mask] {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+[data-reveal-mask] > span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform var(--dur-slow) var(--ease-expo) var(--reveal-delay, 0ms);
+  will-change: transform;
+}
+[data-reveal-mask='in'] > span {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    transition: none;
+  }
+  [data-reveal],
+  [data-reveal-mask] > span {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .u-link::after {
+    transition: none;
+  }
+}

@@ -1,0 +1,133 @@
+/* A phone-shaped screen, drawn flat: no bezel, just a tall rounded surface.
+   Font size scales with the screen width via container units set by the parent. */
+.screen {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(0.55rem, 4.2cqw, 0.85rem);
+  overflow: hidden;
+  user-select: none;
+  transition: background-color var(--dur-theme) var(--ease-in-out);
+}
+.status {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9em 1.4em 0.4em;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+.statusRight { display: inline-flex; gap: 0.25em; align-items: flex-end; }
+.statusRight i { display: block; width: 0.3em; background: var(--ink); height: 0.5em; }
+.statusRight i:nth-child(2) { height: 0.7em; }
+.statusRight i:nth-child(3) { height: 0.9em; }
+
+.pad {
+  padding: 0.6em 1.4em 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  flex: 1;
+  min-height: 0;
+}
+.brandRow { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4em; }
+.brand { font-size: 1.7em; font-weight: 600; letter-spacing: -0.03em; }
+.k {
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.search {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--line-strong);
+  padding: 0.6em 0.9em;
+  color: var(--ink-3);
+  border-radius: 0.4em;
+}
+.chips { display: flex; gap: 0.4em; flex-wrap: nowrap; overflow: hidden; margin-top: 0.2em; }
+.chip {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.35em 0.75em;
+  white-space: nowrap;
+  color: var(--ink-2);
+  font-size: 0.9em;
+}
+.chipOn { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.cards { display: flex; flex-direction: column; gap: 0.7em; margin-top: 0.5em; }
+.card {
+  display: grid;
+  grid-template-columns: 5.2em 1fr;
+  gap: 0.8em;
+  align-items: center;
+}
+.thumb {
+  aspect-ratio: 1;
+  background: var(--bg-3);
+  border-radius: 0.4em;
+  transition: background-color var(--dur-theme) var(--ease-in-out);
+}
+.card:nth-child(2) .thumb { background: var(--bg-2); }
+.card:nth-child(3) .thumb { background: var(--ink); opacity: 0.85; }
+.cardBody { display: flex; flex-direction: column; gap: 0.15em; min-width: 0; }
+.cardTag { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 500; }
+.cardTitle { font-weight: 500; font-size: 1.05em; letter-spacing: -0.01em; }
+.cardMeta { color: var(--ink-2); font-size: 0.9em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.tabs {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.9em 1em 1.3em;
+  border-top: 1px solid var(--line);
+  color: var(--ink-3);
+  font-size: 0.85em;
+}
+.tabOn { color: var(--ink); font-weight: 500; }
+
+/* event detail */
+.hero {
+  height: 38%;
+  background: var(--bg-3);
+  position: relative;
+  transition: background-color var(--dur-theme) var(--ease-in-out);
+}
+.back { position: absolute; top: 0.8em; left: 1.2em; font-size: 1.2em; }
+.heroTag {
+  position: absolute;
+  bottom: 1em;
+  left: 1.4em;
+  background: var(--bg);
+  padding: 0.3em 0.7em;
+  border-radius: 999px;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+.h1 { font-size: 1.7em; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin: 0.3em 0 0.4em; }
+.metaRow { display: grid; grid-template-columns: 4em 1fr; gap: 0.5em; font-size: 0.95em; padding: 0.35em 0; border-top: 1px solid var(--line); }
+.lines { display: flex; flex-direction: column; gap: 0.45em; margin-top: 0.8em; }
+.lines i { display: block; height: 0.5em; background: var(--bg-3); border-radius: 2px; }
+.cta {
+  margin-top: auto;
+  background: var(--ink);
+  color: var(--bg);
+  text-align: center;
+  padding: 0.85em;
+  border-radius: 0.5em;
+  font-weight: 500;
+}
+.source { font-size: 0.72em; color: var(--ink-3); text-align: center; margin-top: 0.4em; }
+
+/* filters */
+.list { display: flex; flex-direction: column; }
+.list li { display: flex; justify-content: space-between; align-items: center; padding: 0.55em 0; border-bottom: 1px solid var(--line); }
+.box { width: 1em; height: 1em; border: 1px solid var(--line-strong); border-radius: 0.2em; }
+.boxOn { background: var(--ink); border-color: var(--ink); }
