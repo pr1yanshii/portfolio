@@ -19,7 +19,7 @@ Everything editable lives in `src/content/`. Components never hard-code facts.
 | `experience.ts` | Experience entries, the venture figures, and the Girls into VC moment |
 | `about.ts` | About headline, paragraphs, and the outside-work line |
 
-Placeholders to replace: `links.github` and `links.resume` in `site.ts` (drop `resume.pdf` into `/public`).
+Placeholder to replace: `links.resume` in `site.ts` (drop `resume.pdf` into `/public`).
 
 ## Project visuals
 
