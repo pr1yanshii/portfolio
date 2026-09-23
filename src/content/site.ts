@@ -22,7 +22,7 @@ export const site = {
   links: {
     email: 'priyanshi.sitlani@uconn.edu',
     linkedin: 'https://www.linkedin.com/in/priyanshi-sitlani',
-    github: 'https://github.com/TODO',   // TODO: GitHub URL
+    github: 'https://github.com/pr1yanshii',
     resume: '/resume.pdf',               // TODO: drop resume.pdf into /public
   },
 } as const;

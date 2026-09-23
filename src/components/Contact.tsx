@@ -12,7 +12,7 @@ export function Contact() {
   const links = [
     { label: 'Email', value: site.links.email, href: `mailto:${site.links.email}`, ext: false },
     { label: 'LinkedIn', value: 'linkedin.com/in/priyanshi-sitlani', href: site.links.linkedin, ext: true },
-    { label: 'GitHub', value: 'github.com/ — placeholder', href: site.links.github, ext: true },
+    { label: 'GitHub', value: 'github.com/pr1yanshii', href: site.links.github, ext: true },
   ];
 
   return (
@@ -41,7 +41,7 @@ export function Contact() {
                     href={l.href}
                     direction={l.ext ? 'up-right' : 'right'}
                     target={l.ext ? '_blank' : undefined}
-                    rel={l.ext ? 'noreferrer' : undefined}
+                    rel={l.ext ? 'noopener noreferrer' : undefined}
                     data-cursor={l.ext ? 'ext' : undefined}
                     className={styles.link}
                   >
