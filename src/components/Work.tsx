@@ -10,7 +10,7 @@ export function Work() {
         <SectionHeader
           number="01"
           title={<>Selected <em className="serif">work</em></>}
-          aside="Four things I've helped build — a hackathon product, a beta program, and two internal tools people rely on."
+          aside="Four things I've helped build — a consumer product I'm building now, a hackathon product, a beta program, and an internal tool."
         />
         <div className={styles.list}>
           {projects.map((p, i) => (

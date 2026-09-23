@@ -37,7 +37,7 @@ export const experience: Experience[] = [
       'TimeTracker — re-engineered authentication and improved the interface.',
       'Rain Garden — turned plant and location data into a browsable application.',
     ],
-    related: ['sourcery', 'timetracker', 'raingarden'],
+    related: ['sourcery', 'raingarden'],
   },
   {
     org: 'Hillside Ventures',

@@ -84,7 +84,7 @@ export function Experience() {
                     See{' '}
                     {e.related.map((slug, ri) => (
                       <span key={slug}>
-                        <a href={`#work-${slug}`} className="u-link">{slug === 'raingarden' ? 'Rain Garden' : slug === 'timetracker' ? 'TimeTracker' : 'Sourcery'}</a>
+                        <a href={`#work-${slug}`} className="u-link">{slug === 'raingarden' ? 'Rain Garden' : 'Sourcery'}</a>
                         {ri < e.related!.length - 1 && ', '}
                       </span>
                     ))}

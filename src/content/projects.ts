@@ -5,7 +5,7 @@
  * and the designed placeholder (`visual`) is ignored.
  * `layout` + `flip` control the composition; alternate them down the page.
  */
-export type VisualKind = 'atelier' | 'sourcery' | 'timetracker' | 'raingarden' | 'showup';
+export type VisualKind = 'atelier' | 'sourcery' | 'raingarden' | 'showup';
 /** showcase = full-width editorial screen showcase (for consumer products) */
 export type ProjectLayout = 'wide' | 'split' | 'compact' | 'showcase';
 
@@ -29,6 +29,19 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'showup',
+    title: 'Show Up',
+    tagline: 'A better way to discover what\u2019s happening at UConn.',
+    description: 'A mobile-first platform that brings campus events from different sources into one visual discovery experience.',
+    contribution: 'Founder · Product + Engineering',
+    labels: ['Next.js', 'Supabase'],
+    status: 'In development · 2026',
+    year: '2026',
+    layout: 'showcase',
+    visual: 'showup',
+    // images: ['/images/showup/feed.png', '/images/showup/event.png', '/images/showup/filters.png'],
+  },
   {
     slug: 'atelier',
     title: 'Atelier',
@@ -54,16 +67,6 @@ export const projects: Project[] = [
     visual: 'sourcery',
   },
   {
-    slug: 'timetracker',
-    title: 'TimeTracker',
-    description: 'Modernized authentication and improved the experience of an internal payroll application used by 50+ staff.',
-    contribution: 'Migrated login to Microsoft SSO, improved UI and shift creation',
-    labels: ['Laravel', 'Microsoft SSO', 'Product engineering'],
-    year: '2025 — 2026',
-    layout: 'split',
-    visual: 'timetracker',
-  },
-  {
     slug: 'raingarden',
     title: 'Rain Garden',
     description: 'Turned structured plant and location data into a searchable, filterable web experience.',
@@ -71,20 +74,6 @@ export const projects: Project[] = [
     labels: ['Laravel', 'Data', 'UI'],
     year: '2025',
     layout: 'compact',
-    flip: true,
     visual: 'raingarden',
-  },
-  {
-    slug: 'showup',
-    title: 'Show Up',
-    tagline: 'A better way to discover what\u2019s happening at UConn.',
-    description: 'A mobile-first platform that brings campus events from different sources into one visual discovery experience.',
-    contribution: 'Founder · Product + Engineering',
-    labels: ['Next.js', 'Supabase'],
-    status: 'In development · 2026',
-    year: '2026',
-    layout: 'showcase',
-    visual: 'showup',
-    // images: ['/images/showup/feed.png', '/images/showup/event.png', '/images/showup/filters.png'],
-  },
+  }
 ];

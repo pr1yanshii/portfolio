@@ -115,61 +115,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* --- time tracker grid --- */
-.week {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 3.5em repeat(5, 1fr);
-  grid-template-rows: auto;
-  grid-auto-rows: 1fr;
-  min-height: 0;
-}
-.week > * {
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 0.4em 0.5em;
-  position: relative;
-  min-height: 0;
-}
-.week > *:nth-child(6n) {
-  border-right: 0;
-}
-.dayHead {
-  text-align: center;
-  color: var(--ink-2);
-  font-weight: 500;
-}
-.hour {
-  color: var(--ink-3);
-  font-size: 0.85em;
-}
-.shift {
-  position: absolute;
-  left: 0.35em;
-  right: 0.35em;
-  top: 0.3em;
-  background: var(--bg-2);
-  border-left: 2px solid var(--ink);
-  padding: 0.35em 0.5em;
-  font-size: 0.85em;
-  line-height: 1.25;
-  transition: background-color var(--dur-theme) var(--ease-in-out);
-}
-.shiftNew {
-  border-left-color: var(--accent);
-  border: 1px dashed var(--line-strong);
-  border-left: 2px solid var(--accent);
-  color: var(--ink-2);
-}
-.button {
-  background: var(--ink);
-  color: var(--bg);
-  padding: 0.45em 0.9em;
-  font-weight: 500;
-  margin-left: auto;
-  white-space: nowrap;
-}
-
 /* --- agent trace --- */
 .trace {
   flex: 1;
