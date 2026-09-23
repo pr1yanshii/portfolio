@@ -32,8 +32,8 @@ export const site = {
  * and the page theme (background cross-fades as sections cross the viewport).
  */
 export const sections = [
-  { id: 'work',       number: '01', label: 'Work',       theme: 'light', nav: true  },
-  { id: 'experience', number: '02', label: 'Experience', theme: 'dark',  nav: true  },
+  { id: 'experience', number: '01', label: 'Experience', theme: 'dark',  nav: true  },
+  { id: 'work',       number: '02', label: 'Work',       theme: 'light', nav: true  },
   { id: 'about',      number: '03', label: 'About',      theme: 'light', nav: true  },
   { id: 'leadership', number: '04', label: 'Leadership', theme: 'light', nav: false },
   { id: 'contact',    number: '05', label: 'Contact',    theme: 'dark',  nav: true  },

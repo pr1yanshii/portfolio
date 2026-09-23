@@ -51,8 +51,8 @@ export default function App() {
       <Nav active={active} lenis={lenis} visible={entered} />
       <main>
         <Hero />
-        <Work />
         <Experience />
+        <Work />
         <About />
         <Leadership />
         <Contact />

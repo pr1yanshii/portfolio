@@ -8,7 +8,7 @@ export function Work() {
     <section id="work" data-theme="light" className={styles.section}>
       <div className="container">
         <SectionHeader
-          number="01"
+          number="02"
           title={<>Selected <em className="serif">work</em></>}
           aside="Four things I've helped build — a consumer product I'm building now, a hackathon product, a beta program, and an internal tool."
         />

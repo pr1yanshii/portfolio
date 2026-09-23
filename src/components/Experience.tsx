@@ -42,7 +42,7 @@ export function Experience() {
     <section id="experience" data-theme="dark" className={styles.section}>
       <div className="container">
         <SectionHeader
-          number="02"
+          number="01"
           title="Experience"
           aside="Product, engineering, and venture — inside a startup, a university, and a student fund."
         />

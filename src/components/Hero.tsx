@@ -104,7 +104,7 @@ export function Hero() {
               {site.location} <span className={styles.sep}>·</span> <time>{time}</time>
             </p>
 
-            <a href="#work" className={`micro ${styles.scroll}`} data-reveal style={delay(840)}>
+            <a href="#experience" className={`micro ${styles.scroll}`} data-reveal style={delay(840)}>
               <span>Scroll</span>
               <span className={styles.scrollLine} aria-hidden="true" />
             </a>
