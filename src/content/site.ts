@@ -34,8 +34,8 @@ export const site = {
 export const sections = [
   { id: 'experience', number: '01', label: 'Experience', theme: 'dark',  nav: true  },
   { id: 'work',       number: '02', label: 'Work',       theme: 'light', nav: true  },
-  { id: 'about',      number: '03', label: 'About',      theme: 'light', nav: true  },
-  { id: 'leadership', number: '04', label: 'Leadership', theme: 'light', nav: false },
+  { id: 'leadership', number: '03', label: 'Leadership', theme: 'light', nav: false },
+  { id: 'about',      number: '04', label: 'About',      theme: 'light', nav: true  },
   { id: 'contact',    number: '05', label: 'Contact',    theme: 'dark',  nav: true  },
 ] as const;
 

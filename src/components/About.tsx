@@ -10,7 +10,7 @@ export function About() {
   return (
     <section id="about" data-theme="light" className={styles.section}>
       <div className="container">
-        <SectionHeader number="03" title="About" />
+        <SectionHeader number="04" title="About" />
 
         <div className={`grid ${styles.statement}`}>
           <h3 className={styles.headline} data-reveal>

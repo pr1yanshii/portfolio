@@ -14,7 +14,7 @@ export function Leadership() {
         <hr className="rule" />
         <div className={`grid ${styles.body}`}>
           <p className={`micro ${styles.kicker}`} data-reveal>
-            <span>04</span>
+            <span>03</span>
             <span className={styles.kickerSep} aria-hidden="true">/</span>
             <span>Leadership</span>
           </p>

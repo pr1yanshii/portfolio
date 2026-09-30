@@ -53,8 +53,8 @@ export default function App() {
         <Hero />
         <Experience />
         <Work />
-        <About />
         <Leadership />
+        <About />
         <Contact />
       </main>
     </>
