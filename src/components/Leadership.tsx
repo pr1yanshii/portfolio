@@ -27,17 +27,22 @@ export function Leadership() {
             ))}
           </h2>
 
-          <div className={styles.facts} data-reveal style={delay(280)}>
-            <p className={styles.org}>{leadership.org}</p>
-            <p className={styles.role}>
-              {leadership.role} <span className={styles.period}>· {leadership.period}</span>
-            </p>
-            <p className={styles.text}>{leadership.text}</p>
-            <ul className={styles.areas} aria-label="Areas of work">
-              {leadership.areas.map((a) => (
-                <li key={a}>{a}</li>
-              ))}
-            </ul>
+          <div className={styles.entries}>
+            {leadership.entries.map((e, i) => (
+              <div key={e.org} className={styles.facts} data-reveal style={delay(280 + i * 90)}>
+                <p className={styles.org}>{e.org}</p>
+                <p className={styles.role}>
+                  {e.role}
+                  {e.period && <span className={styles.period}> · {e.period}</span>}
+                </p>
+                <p className={styles.text}>{e.text}</p>
+                <ul className={styles.areas} aria-label={`${e.org} highlights`}>
+                  {e.meta.map((m) => (
+                    <li key={m}>{m}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </div>

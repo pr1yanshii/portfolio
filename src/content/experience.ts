@@ -61,11 +61,30 @@ export const ventureFigures = [
   { value: '~20%', label: 'faster turnaround' },
 ];
 
+export interface LeadershipEntry {
+  org: string;
+  role: string;
+  period?: string;      // omit when no dates were provided
+  text: string;
+  meta: string[];       // short metadata, rendered as a divided line
+}
+
+/** Leadership: one editorial headline, then the entries. */
 export const leadership = {
-  org: 'Girls into VC — UConn',
-  role: 'Founder & President',
-  period: 'February 2026 — Present',
   headline: ['Building the room,', 'not just entering it.'],
-  text: 'Founded UConn’s first Girls into VC chapter and built campus programming around venture capital.',
-  areas: ['Investor engagement', 'Cross-campus partnerships', 'Startup sourcing', 'Diligence & evaluation', 'Venture education'],
+  entries: [
+    {
+      org: 'Girls into VC — UConn',
+      role: 'Founder & President',
+      period: 'February 2026 — Present',
+      text: 'Founded UConn\u2019s first Girls into VC chapter and built campus programming around venture capital.',
+      meta: ['Investor engagement', 'Cross-campus partnerships', 'Startup sourcing', 'Diligence & evaluation', 'Venture education'],
+    },
+    {
+      org: 'Husky Developers',
+      role: 'Vice President',
+      text: 'Helping UConn students gain hands-on development experience through 12+ technical workshops and 9 projects built for campus clubs and organizations, alongside alumni talks and collaborative learning.',
+      meta: ['12+ Workshops', '9 Projects', 'Campus Organizations', 'Alumni'],
+    },
+  ] as LeadershipEntry[],
 };
