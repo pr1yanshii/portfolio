@@ -77,3 +77,26 @@ export const projects: Project[] = [
     visual: 'raingarden',
   }
 ];
+
+/**
+ * Earlier work — a small coda under Selected Work, deliberately secondary
+ * to the four featured projects. Keep entries to one paragraph.
+ */
+export interface EarlierWork {
+  title: string;
+  category: string;
+  year: string;
+  description: string;
+  meta: string[];
+}
+
+export const earlierWork: EarlierWork[] = [
+  {
+    title: 'DancePoint',
+    category: 'Computer Vision / ML',
+    year: '2023 — 2024',
+    description:
+      'Built a dance pose classification system using TensorFlow and Python, achieving 90%+ classification accuracy with real-time OpenCV and skeleton keypoint detection. Received $500 in seed funding through a university competition.',
+    meta: ['TensorFlow', 'Python', 'OpenCV', '90%+ accuracy', '$500 seed funding'],
+  },
+];

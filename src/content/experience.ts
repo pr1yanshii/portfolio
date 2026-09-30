@@ -83,8 +83,9 @@ export const leadership = {
     {
       org: 'Husky Developers',
       role: 'Vice President',
+      period: '2024 — Present',
       text: 'Helping UConn students gain hands-on development experience through 12+ technical workshops and 9 projects built for campus clubs and organizations, alongside alumni talks and collaborative learning.',
-      meta: ['12+ Workshops', '9 Projects', 'Campus Organizations', 'Alumni'],
+      meta: ['12+ Workshops', '9 Projects', 'Campus Organizations'],
     },
   ] as LeadershipEntry[],
 };
