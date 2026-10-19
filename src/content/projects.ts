@@ -5,7 +5,7 @@
  * and the designed placeholder (`visual`) is ignored.
  * `layout` + `flip` control the composition; alternate them down the page.
  */
-export type VisualKind = 'atelier' | 'sourcery' | 'raingarden' | 'showup';
+export type VisualKind = 'atelier' | 'sourcery' | 'raingarden' | 'showup' | 'ping';
 /** showcase = full-width editorial screen showcase (for consumer products) */
 export type ProjectLayout = 'wide' | 'split' | 'compact' | 'showcase';
 
@@ -41,6 +41,21 @@ export const projects: Project[] = [
     layout: 'showcase',
     visual: 'showup',
     // images: ['/images/showup/feed.png', '/images/showup/event.png', '/images/showup/filters.png'],
+  },
+  {
+    slug: 'ping',
+    title: 'Ping',
+    tagline: 'Finding the people already standing near you.',
+    description:
+      'An iOS app for proximity-based social discovery. I lead the CSE team and build the app itself \u2014 setting product direction with our sponsor and advisor, then shipping the MVP against the real limits of Bluetooth and UWB.',
+    contribution: 'CSE Team Manager & iOS Developer',
+    labels: ['Swift', 'iOS', 'Bluetooth / UWB', 'Product development'],
+    recognition: 'UConn Senior Design \u00b7 Sponsored project',
+    status: 'In development \u00b7 Sept 2026 \u2014 Present',
+    year: '2026 \u2014 Present',
+    layout: 'split',
+    flip: true,
+    visual: 'ping',
   },
   {
     slug: 'atelier',

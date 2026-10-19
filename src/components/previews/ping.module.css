@@ -1,0 +1,156 @@
+/* Ping: a proximity-discovery screen, drawn flat and abstract.
+   Nothing here depicts a real screenshot or real people. */
+.wrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(0.75rem, 3%, 2rem);
+  padding: clamp(1rem, 5%, 2.5rem);
+  user-select: none;
+}
+
+/* --- left: the range diagram --- */
+.radar {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  align-self: center;
+}
+.ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  opacity: 0.55;
+}
+.ring[data-r='1'] { width: 34%; height: 34%; }
+.ring[data-r='2'] { width: 64%; height: 64%; }
+.ring[data-r='3'] { width: 94%; height: 94%; opacity: 0.35; }
+
+/* "you" at the centre */
+.me {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 11%;
+  height: 11%;
+  border-radius: 50%;
+  background: var(--ink);
+}
+/* a heading wedge, drawn with a single rotated hairline */
+.heading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 47%;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), transparent);
+  transform-origin: left center;
+  transform: rotate(-38deg);
+}
+.pin {
+  position: absolute;
+  width: 7.5%;
+  height: 7.5%;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--ink-2);
+  transform: translate(-50%, -50%);
+}
+.pinNear {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.radarLabel {
+  position: absolute;
+  left: 50%;
+  bottom: -1.6em;
+  transform: translateX(-50%);
+  font-size: 0.78em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* --- right: the nearby list --- */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  font-size: clamp(0.6rem, 1.15vw, 0.82rem);
+  color: var(--ink);
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid var(--line);
+}
+.title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: 1.5em;
+}
+.k {
+  font-size: 0.78em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1.9em 1fr auto;
+  gap: 0.7em;
+  align-items: center;
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line);
+}
+.row:last-of-type { border-bottom: 0; }
+.avatar {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--bg-3);
+  transition: background-color var(--dur-theme) var(--ease-in-out);
+}
+.row:nth-of-type(2) .avatar { background: var(--bg-2); }
+.name { font-weight: 500; }
+.sub { color: var(--ink-3); font-size: 0.85em; display: block; }
+.dist {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.arrow { color: var(--accent); padding-left: 0.3em; display: inline-block; }
+.cta {
+  margin-top: 0.3em;
+  background: var(--ink);
+  color: var(--bg);
+  text-align: center;
+  padding: 0.6em;
+  border-radius: 0.4em;
+  font-weight: 500;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-3);
+  font-size: 0.8em;
+  padding-top: 0.2em;
+}
+
+/* Below 560px the frame is too short for both columns, so the range diagram
+   carries the idea on its own. */
+@media (max-width: 560px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+  .panel { display: none; }
+  .radar { width: 58%; }
+}
