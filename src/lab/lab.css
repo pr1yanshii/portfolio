@@ -1,0 +1,119 @@
+/* ------------------------------------------------------------------
+   THE PRODUCT LAB — scoped design system.
+   Every token is namespaced under .lab so the portfolio palette is
+   untouched. Typography is inherited from the site on purpose: this
+   should read as the same person's work, in a different room.
+   ------------------------------------------------------------------ */
+
+.lab {
+  --bg: #f6f5f2;
+  --dark: #101114;
+  --violet: #6558f5;
+  --lime: #c8ff7a;
+  --ink: #171717;
+  --muted: #737373;
+  --line: rgba(23, 23, 23, 0.12);
+  --line-strong: rgba(23, 23, 23, 0.26);
+  --paper: #fffefb;
+
+  --shadow-sm: 0 1px 2px rgba(16, 17, 20, 0.04), 0 4px 12px -6px rgba(16, 17, 20, 0.12);
+  --shadow-md: 0 2px 4px rgba(16, 17, 20, 0.04), 0 18px 36px -18px rgba(16, 17, 20, 0.22);
+  --shadow-lg: 0 4px 8px rgba(16, 17, 20, 0.05), 0 40px 80px -32px rgba(16, 17, 20, 0.3);
+
+  --e: cubic-bezier(0.16, 1, 0.3, 1);
+  --e-io: cubic-bezier(0.65, 0, 0.35, 1);
+
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* a very fine grain, so the flat off-white has some tooth */
+.lab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.lab :focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ---------- shared primitives ---------- */
+
+.lab-micro {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
+.lab-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.35em 0.8em;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: var(--paper);
+  white-space: nowrap;
+}
+
+.lab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 999px;
+  padding: 0.85em 1.5em;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  box-shadow: var(--shadow-md);
+  transition: transform 420ms var(--e), background-color 300ms var(--e);
+  will-change: transform;
+}
+.lab-btn:hover {
+  transform: translateY(-2px);
+  background: var(--violet);
+}
+.lab-btn:active {
+  transform: translateY(0) scale(0.985);
+}
+.lab-btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  box-shadow: none;
+}
+.lab-btn--ghost:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-btn,
+  .lab-btn:hover,
+  .lab-btn:active {
+    transform: none;
+    transition: background-color 200ms linear;
+  }
+}

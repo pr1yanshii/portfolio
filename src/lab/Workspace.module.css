@@ -1,0 +1,360 @@
+.workspace { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+
+/* ---------- toolbar ---------- */
+.bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(0.85rem, 2vw, 1.4rem) clamp(1rem, 3vw, 2.5rem) 0.5rem;
+}
+.barLeft { display: flex; align-items: center; gap: 1.25rem; min-width: 0; }
+.mark { color: var(--ink); font-weight: 600; white-space: nowrap; }
+.sep { color: var(--muted); padding-inline: 0.2em; }
+.back { color: var(--muted); white-space: nowrap; transition: color 200ms ease; }
+.back:hover { color: var(--ink); }
+
+.lensWrap {
+  display: flex;
+  gap: 0.15rem;
+  padding: 0.25rem;
+  background: rgba(23, 23, 23, 0.05);
+  border-radius: 999px;
+  justify-self: center;
+}
+.lensBtn {
+  position: relative;
+  padding: 0.5em 1.1em;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  transition: color 260ms ease;
+}
+.lensBtn[aria-selected='true'] { color: var(--bg); }
+.lensPill { position: absolute; inset: 0; background: var(--ink); border-radius: 999px; z-index: 0; }
+.lensLabel { position: relative; z-index: 1; }
+
+.actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+.act {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.45em 0.9em;
+  color: var(--muted);
+  background: var(--paper);
+  white-space: nowrap;
+  transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+.act:hover { color: var(--ink); border-color: var(--ink); }
+.shipBtn { border-color: var(--violet); color: var(--violet); }
+.shipBtn:hover { background: var(--violet); color: var(--bg); border-color: var(--violet); }
+
+.lensNote {
+  text-align: center;
+  color: var(--muted);
+  padding-bottom: 0.75rem;
+}
+
+/* ---------- board ---------- */
+.board {
+  position: relative;
+  flex: 1;
+  margin: 0 clamp(0.75rem, 2vw, 1.75rem) clamp(0.75rem, 2vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 1px 1px, rgba(23, 23, 23, 0.14) 1px, transparent 0) 0 0 / 26px 26px,
+    var(--paper);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ---------- project card ---------- */
+.card {
+  position: absolute;
+  width: clamp(230px, 22vw, 310px);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: 1rem 1.1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: grab;
+  z-index: 20;
+  will-change: transform;
+}
+.card:active { cursor: grabbing; }
+.grip {
+  position: absolute;
+  top: 0.55rem; left: 50%;
+  transform: translateX(-50%);
+  width: 26px; height: 3px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  opacity: 0.5;
+}
+.cardHead { padding-top: 0.35rem; }
+.cardKicker { color: var(--muted); }
+.cardTitle {
+  margin: 0.25rem 0 0;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+.cardBody { min-height: 7.5rem; }
+.stage {
+  display: inline-block;
+  color: var(--violet);
+  margin-bottom: 0.4rem;
+}
+.cardText { margin: 0; font-size: 0.875rem; line-height: 1.5; color: var(--ink); text-wrap: pretty; }
+.cardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+.cardRole { color: var(--muted); font-size: 0.625rem; letter-spacing: 0.1em; }
+.cardOpen {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 200ms ease;
+}
+.cardOpen:hover { color: var(--violet); }
+
+/* ---------- sticky notes ---------- */
+.sticky {
+  position: absolute;
+  width: clamp(130px, 12vw, 165px);
+  aspect-ratio: 1;
+  padding: 0.85rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  border-radius: 3px;
+  box-shadow: var(--shadow-sm);
+  cursor: grab;
+  z-index: 15;
+  display: flex;
+  align-items: flex-end;
+  will-change: transform;
+}
+.sticky:active { cursor: grabbing; }
+.sticky[data-tone='lime'] { background: var(--lime); }
+.sticky[data-tone='violet'] { background: var(--violet); color: #fff; }
+.sticky[data-tone='paper'] { background: #fff; border: 1px solid var(--line); }
+
+/* ---------- hover lessons ---------- */
+.lesson {
+  position: absolute;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+  text-align: left;
+  max-width: 190px;
+}
+.lessonDot {
+  width: 9px; height: 9px; border-radius: 50%;
+  border: 1.5px solid var(--violet);
+  background: var(--paper);
+  transition: background-color 260ms ease, transform 420ms var(--e);
+}
+.lesson:hover .lessonDot,
+.lesson:focus-visible .lessonDot { background: var(--violet); transform: scale(1.25); }
+.lessonPrompt { color: var(--muted); }
+.lessonText {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 320ms ease, transform 420ms var(--e);
+  pointer-events: none;
+}
+.lesson:hover .lessonText,
+.lesson:focus-visible .lessonText { opacity: 1; transform: none; }
+
+/* ---------- simulator card ---------- */
+.simCard {
+  position: absolute;
+  right: 4%;
+  bottom: 7%;
+  width: clamp(250px, 25vw, 340px);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.15rem 1.25rem;
+  background: var(--dark);
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  z-index: 25;
+  will-change: transform;
+}
+.simKicker { color: var(--lime); }
+.simTitle { font-size: 1.625rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; }
+.simSub { font-size: 0.875rem; color: rgba(255, 255, 255, 0.64); line-height: 1.45; }
+.simGo {
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--lime);
+}
+
+/* ---------- overlay + detail panel ---------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  background: rgba(16, 17, 20, 0.42);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: clamp(1rem, 4vh, 3rem) clamp(0.75rem, 3vw, 2rem) 0;
+}
+.panel {
+  width: min(880px, 100%);
+  max-height: 92%;
+  overflow-y: auto;
+  background: var(--bg);
+  border-radius: 16px 16px 0 0;
+  box-shadow: var(--shadow-lg);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  outline: none;
+}
+.panelHead { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.panelTitle { margin: 0.3rem 0 0.35rem; font-size: clamp(1.75rem, 3.4vw, 2.75rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1; }
+.panelStatus { color: var(--muted); }
+.close {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  display: grid; place-items: center;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.close:hover { background: var(--ink); color: var(--bg); }
+
+.panelLenses { display: flex; gap: 0.4rem; margin: 1.25rem 0 1.5rem; flex-wrap: wrap; }
+.panelLens {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.45em 1em;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  transition: all 220ms ease;
+}
+.panelLens[aria-selected='true'] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.stages { list-style: none; margin: 0; padding: 0; }
+.stageRow {
+  display: grid;
+  grid-template-columns: 2.5rem 7.5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+}
+.stageRow[data-pending] { opacity: 0.62; }
+.stageNum { color: var(--muted); }
+.stageName { font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.01em; }
+.stageBody { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--ink); text-wrap: pretty; }
+
+.panelFoot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  margin-top: 1.5rem; padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+.panelRole { color: var(--muted); }
+.stackList { display: flex; gap: 0.4rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+
+/* ---------- ship it ---------- */
+.shipOverlay { position: absolute; inset: 0; z-index: 80; pointer-events: none; display: grid; place-items: center; }
+.shipSweep {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, transparent 20%, var(--lime) 50%, transparent 80%);
+  opacity: 0.55;
+  transform-origin: left;
+}
+.shipStamp {
+  font-size: clamp(3rem, 12vw, 9rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--dark);
+  border: 5px solid var(--dark);
+  border-radius: 12px;
+  padding: 0.05em 0.25em;
+}
+
+/* ---------- bad idea ---------- */
+.ideaWrap {
+  position: absolute;
+  left: 50%; bottom: clamp(1.5rem, 5vh, 3rem);
+  transform: translateX(-50%);
+  z-index: 70;
+  width: min(460px, calc(100% - 2rem));
+  background: var(--dark);
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--shadow-lg);
+}
+.ideaKicker { color: var(--lime); }
+.ideaText { margin: 0.5rem 0 0.9rem; font-size: 1.0625rem; line-height: 1.4; letter-spacing: -0.015em; }
+.ideaActions { display: flex; gap: 0.5rem; }
+.ideaActions .act { background: transparent; color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.26); }
+.ideaActions .act:hover { color: var(--dark); background: #fff; border-color: #fff; }
+
+/* ---------- responsive: the canvas becomes a stack ---------- */
+@media (max-width: 900px) {
+  .bar { grid-template-columns: 1fr; gap: 0.75rem; }
+  .barLeft { justify-content: space-between; }
+  .lensWrap { justify-self: stretch; }
+  .lensBtn { flex: 1; }
+  .actions { justify-content: flex-start; flex-wrap: wrap; }
+
+  .board {
+    background: transparent;
+    border: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.25rem 0 2rem;
+    margin-inline: clamp(1rem, 4vw, 2rem);
+  }
+  .card, .sticky, .simCard, .lesson {
+    position: static;
+    width: 100%;
+    transform: none !important;
+    rotate: 0deg !important;
+  }
+  .card { cursor: default; }
+  .grip { display: none; }
+  .cardBody { min-height: 0; }
+  .sticky { aspect-ratio: auto; padding: 1rem; align-items: flex-start; }
+  .lesson { max-width: none; border: 1px dashed var(--line-strong); border-radius: 10px; padding: 0.85rem 1rem; }
+  .lessonText { opacity: 1; transform: none; }
+  .stageRow { grid-template-columns: 2.25rem 1fr; }
+  .stageName { grid-column: 2; }
+  .stageBody { grid-column: 2; }
+  .panel { border-radius: 14px 14px 0 0; max-height: 94%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lessonDot, .lessonText, .cardOpen, .act { transition: none; }
+}

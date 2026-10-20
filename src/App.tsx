@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { useLenis, scrollToId } from './hooks/useLenis';
+import { useHashRoute } from './hooks/useHashRoute';
+import { Lab } from './lab/Lab';
 import { useSectionTheme } from './hooks/useSectionTheme';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useReveal } from './hooks/useReveal';
@@ -17,23 +20,28 @@ export default function App() {
   const [entered, setEntered] = useState(false);
   const onDone = useCallback(() => setEntered(true), []);
 
-  const lenis = useLenis(entered);
+  const [route, go] = useHashRoute();
+  const inLab = route === 'lab';
+
+  // The portfolio's scroll + observers pause while the Lab is open.
+  const lenis = useLenis(entered && !inLab);
   useSectionTheme(entered);
   useReveal(entered);
   const active = useActiveSection(entered);
 
   // Handle a hash on load (e.g. /#work) once everything is mounted
   useEffect(() => {
-    if (!entered || !location.hash) return;
+    if (!entered || inLab || !location.hash || location.hash.startsWith('#/')) return;
     const el = document.querySelector(location.hash);
     el?.scrollIntoView();
-  }, [entered]);
+  }, [entered, inLab]);
 
   // Route every in-page anchor (scroll cue, back-to-top, …) through Lenis
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
       if (!a || a.getAttribute('href') === '#' || e.defaultPrevented) return;
+      if (a.getAttribute('href')!.startsWith('#/')) return;   // route links, not anchors
       const id = a.getAttribute('href')!.slice(1);
       if (!document.getElementById(id)) return;
       e.preventDefault();
@@ -47,8 +55,8 @@ export default function App() {
   return (
     <>
       <Loader onDone={onDone} />
-      <Cursor />
-      <Nav active={active} lenis={lenis} visible={entered} />
+      {!inLab && <Cursor />}
+      <Nav active={active} lenis={lenis} visible={entered && !inLab} onEnterLab={() => go('lab')} />
       <main>
         <Hero />
         <Experience />
@@ -57,6 +65,10 @@ export default function App() {
         <About />
         <Contact />
       </main>
+
+      <AnimatePresence>
+        {inLab && <Lab key="lab" onExit={() => go('home')} />}
+      </AnimatePresence>
     </>
   );
 }
