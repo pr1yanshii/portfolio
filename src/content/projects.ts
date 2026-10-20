@@ -47,10 +47,10 @@ export const projects: Project[] = [
     title: 'Ping',
     tagline: 'Finding the people already standing near you.',
     description:
-      'An iOS app for proximity-based social discovery. I lead the CSE team and build the app itself \u2014 setting product direction with our sponsor and advisor, then shipping the MVP against the real limits of Bluetooth and UWB.',
+      'An existing proximity-based social discovery app our senior design team is debugging and developing toward an MVP. I manage the CSE team and work in the Swift codebase \u2014 coordinating with our ECE counterparts, sponsor and advisor, and researching what Bluetooth and Apple\u2019s Nearby Interaction can actually deliver.',
     contribution: 'CSE Team Manager & iOS Developer',
-    labels: ['Swift', 'iOS', 'Bluetooth / UWB', 'Product development'],
-    recognition: 'UConn Senior Design \u00b7 Sponsored project',
+    labels: ['Swift', 'iOS', 'Bluetooth / UWB', 'Product development', 'User research'],
+    recognition: 'UConn Senior Design \u00b7 Team 36',
     status: 'In development \u00b7 Sept 2026 \u2014 Present',
     year: '2026 \u2014 Present',
     layout: 'split',
