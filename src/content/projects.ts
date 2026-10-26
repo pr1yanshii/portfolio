@@ -9,6 +9,19 @@ export type VisualKind = 'atelier' | 'sourcery' | 'raingarden' | 'showup' | 'pin
 /** showcase = full-width editorial screen showcase (for consumer products) */
 export type ProjectLayout = 'wide' | 'split' | 'compact' | 'showcase';
 
+/**
+ * Each project carries its own colour world, drawn from what the product
+ * actually is. Previews inherit these via CSS custom properties, so no two
+ * read alike. `accent` is for rules, marks and small caps — never body text.
+ */
+export interface Palette {
+  accent: string;   // the project's signature
+  tint: string;     // pale surface behind the preview
+  deep: string;     // a step darker, for shapes inside the preview
+  dark?: string;    // optional charcoal surface, for the hero treatment
+  onDark?: string;  // text colour when `dark` is in use
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -25,6 +38,8 @@ export interface Project {
   visual: VisualKind;
   image?: string;        // e.g. '/images/atelier/cover.png'
   images?: string[];     // showcase layout: several portrait screens, e.g. ['/images/showup/feed.png', …]
+  problem?: string;      // the friction it addresses, one line
+  palette: Palette;
   href?: string;         // project or demo link — omit to hide it. http(s) opens in a new tab.
   linkLabel?: string;    // link text, defaults to "View project"
 }
@@ -43,6 +58,9 @@ export const projects: Project[] = [
     visual: 'errand',
     href: 'https://errand-khaki.vercel.app',
     linkLabel: 'Live demo',
+    problem:
+      'Handing a purchase to an agent is a trust problem before it is a technical one.',
+    palette: { accent: '#17805C', tint: '#EAF2EC', deep: '#D4E4DA', dark: '#0F1613', onDark: '#E9F1EC' },
   },
   {
     slug: 'showup',
@@ -56,6 +74,9 @@ export const projects: Project[] = [
     layout: 'showcase',
     visual: 'showup',
     // images: ['/images/showup/feed.png', '/images/showup/event.png', '/images/showup/filters.png'],
+    problem:
+      'Events are scattered across UConntact, UConn Events, Athletics and individual organisation pages.',
+    palette: { accent: '#C8552F', tint: '#FBEFE9', deep: '#F2DCD1' },
   },
   {
     slug: 'designer-plus',
@@ -69,6 +90,9 @@ export const projects: Project[] = [
     layout: 'split',
     flip: true,
     visual: 'designerplus',
+    problem:
+      'Exploring a slide design usually means leaving the deck you are working in.',
+    palette: { accent: '#3F5A8A', tint: '#ECF0F8', deep: '#D9E2F0' },
   },
   {
     slug: 'raingarden',
@@ -79,6 +103,9 @@ export const projects: Project[] = [
     year: '2025',
     layout: 'compact',
     visual: 'raingarden',
+    problem:
+      'The plant and location data was accurate and already existed — it just lived in spreadsheets nobody could browse.',
+    palette: { accent: '#4F6B3A', tint: '#EFF3E8', deep: '#DDE7D2' },
   },
   {
     slug: 'ping',
@@ -94,6 +121,9 @@ export const projects: Project[] = [
     layout: 'split',
     flip: true,
     visual: 'ping',
+    problem:
+      'An inherited codebase where the proximity features that define the product are the ones still breaking.',
+    palette: { accent: '#2563C9', tint: '#EAF0FB', deep: '#D5E2F6' },
   },
   {
     slug: 'atelier',
@@ -106,6 +136,9 @@ export const projects: Project[] = [
     year: '2026',
     layout: 'wide',
     visual: 'atelier',
+    problem:
+      'Sizing uncertainty sits behind a large share of apparel returns.',
+    palette: { accent: '#A3504D', tint: '#F8EDEB', deep: '#EFDAD8' },
   },
   {
     slug: 'sourcery',
@@ -118,6 +151,9 @@ export const projects: Project[] = [
     layout: 'split',
     flip: true,
     visual: 'sourcery',
+    problem:
+      'Sign-ups were not the problem. The gap was between signing up and actually using the product.',
+    palette: { accent: '#9E6F26', tint: '#F9F1E3', deep: '#EFE1C9' },
   },
 ];
 

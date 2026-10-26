@@ -8,7 +8,6 @@ export function ErrandPreview() {
         <div className={s.bar}>
           <span className={s.label}>Errand</span>
           <span className={s.muted}>Agentic commerce</span>
-          <span className={s.muted} style={{ marginLeft: 'auto' }}>Illustrative</span>
         </div>
         <div className={s.thread}>
           <div className={`${s.msg} ${s.msgUser}`}>Need a desk lamp under $60, warm light</div>

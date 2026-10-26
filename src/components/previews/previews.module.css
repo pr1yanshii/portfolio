@@ -105,7 +105,7 @@
   width: 0.5em;
   height: 0.5em;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--p-accent, var(--accent));
   display: inline-block;
 }
 .muted {
@@ -140,7 +140,7 @@
   font-size: 0.85em;
 }
 .stepOn .stepState {
-  color: var(--accent);
+  color: var(--p-accent, var(--accent));
 }
 .cursor {
   display: inline-block;
@@ -163,7 +163,7 @@
 }
 .bar2 {
   flex: 1;
-  background: var(--bg-3);
+  background: var(--p-deep, var(--bg-3));
   transition: background-color var(--dur-theme) var(--ease-in-out);
   position: relative;
 }
@@ -216,7 +216,7 @@
 }
 .garment {
   flex: 1;
-  background: var(--bg-2);
+  background: var(--p-tint, var(--bg-2));
   position: relative;
   overflow: hidden;
   transition: background-color var(--dur-theme) var(--ease-in-out);
@@ -280,7 +280,7 @@
 }
 .meter {
   height: 4px;
-  background: var(--bg-3);
+  background: var(--p-deep, var(--bg-3));
   position: relative;
   transition: background-color var(--dur-theme) var(--ease-in-out);
 }
@@ -325,7 +325,7 @@
 }
 .stageBar {
   height: 1.25em;
-  background: var(--bg-3);
+  background: var(--p-deep, var(--bg-3));
   position: relative;
   transition: background-color var(--dur-theme) var(--ease-in-out);
 }
@@ -337,7 +337,7 @@
   background: var(--ink);
 }
 .stageDrop::after {
-  background: var(--accent);
+  background: var(--p-accent, var(--accent));
 }
 .stageVal {
   text-align: right;
@@ -383,7 +383,7 @@
 }
 .msgBot {
   align-self: flex-start;
-  background: var(--bg-2);
+  background: var(--p-tint, var(--bg-2));
   border-bottom-left-radius: 0.2em;
   transition: background-color var(--dur-theme) var(--ease-in-out);
 }
@@ -400,7 +400,7 @@
   background: var(--bg);
   transition: background-color var(--dur-theme) var(--ease-in-out);
 }
-.buyThumb { aspect-ratio: 1; border-radius: 0.3em; background: var(--bg-3); }
+.buyThumb { aspect-ratio: 1; border-radius: 0.3em; background: var(--p-deep, var(--bg-3)); }
 .buyName { font-weight: 500; }
 .buyMeta { color: var(--ink-3); font-size: 0.9em; }
 .buyPrice { font-variant-numeric: tabular-nums; font-weight: 500; }
@@ -426,10 +426,10 @@
   padding: 0.35em 0.9em; border-radius: 0.4em; color: var(--ink-2);
 }
 .limitBar {
-  height: 3px; border-radius: 2px; background: var(--bg-3); position: relative; overflow: hidden;
+  height: 3px; border-radius: 2px; background: var(--p-deep, var(--bg-3)); position: relative; overflow: hidden;
   transition: background-color var(--dur-theme) var(--ease-in-out);
 }
-.limitBar::after { content: ''; position: absolute; inset: 0 62% 0 0; background: var(--accent); }
+.limitBar::after { content: ''; position: absolute; inset: 0 62% 0 0; background: var(--p-accent, var(--accent)); }
 
 /* --- designer+: add-in pane beside slides --- */
 .deck { flex: 1; display: grid; grid-template-columns: 1fr 10.5em; min-height: 0; }
@@ -443,8 +443,8 @@
   padding: 1.2em; min-height: 0;
 }
 .slideTitle { font-size: 1.5em; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
-.slideRule { height: 2px; width: 2.5em; background: var(--accent); }
-.slideLine { height: 0.45em; border-radius: 2px; background: var(--bg-3); }
+.slideRule { height: 2px; width: 2.5em; background: var(--p-accent, var(--accent)); }
+.slideLine { height: 0.45em; border-radius: 2px; background: var(--p-deep, var(--bg-3)); }
 .strip { display: flex; gap: 0.4em; }
 .thumbSlide {
   flex: 1; aspect-ratio: 16/10; border: 1px solid var(--line); border-radius: 0.2em; background: var(--bg);
@@ -456,6 +456,6 @@
   display: flex; flex-direction: column; gap: 0.3em;
 }
 .paneOptOn { border-color: var(--ink); }
-.paneBar { height: 0.4em; border-radius: 2px; background: var(--bg-3); }
+.paneBar { height: 0.4em; border-radius: 2px; background: var(--p-deep, var(--bg-3)); }
 .paneBarInk { background: var(--ink); width: 60%; }
-.paneBarAccent { background: var(--accent); width: 35%; }
+.paneBarAccent { background: var(--p-accent, var(--accent)); width: 35%; }

@@ -7,7 +7,6 @@ export function AtelierPreview() {
         <div className={s.bar}>
           <span className={s.label}>Atelier</span>
           <span className={s.muted}>Relaxed cotton shirt</span>
-          <span className={s.muted} style={{ marginLeft: 'auto' }}>Illustrative</span>
         </div>
         <div className={s.split}>
           <div className={s.product}>

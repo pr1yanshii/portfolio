@@ -19,7 +19,6 @@ export function SourceryPreview() {
         <div className={s.bar}>
           <span className={s.label}>Sourcery · beta</span>
           <span className={s.muted}>Onboarding funnel</span>
-          <span className={s.muted} style={{ marginLeft: 'auto' }}>Illustrative</span>
         </div>
         <div className={s.funnel}>
           {stages.map(([name, w, drop]) => (

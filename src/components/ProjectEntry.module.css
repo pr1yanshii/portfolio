@@ -28,7 +28,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  background: var(--bg-2);
+  background: var(--p-tint, var(--bg-2));
   overflow: hidden;
   transform-origin: center;
   transition: background-color var(--dur-theme) var(--ease-in-out);
@@ -50,7 +50,7 @@
 .visualLink { display: block; }
 .visualLink .inner { transition: transform 900ms var(--ease-expo); }
 .visualLink:hover .inner { transform: scale(1.025) !important; }
-.visualLink:hover .frame { background: var(--bg-3); }
+.visualLink:hover .frame { background: var(--p-deep, var(--bg-3)); }
 
 /* ---- numeral ---- */
 .numeral {
@@ -127,7 +127,7 @@
   border-top: 1px solid var(--line);
   transition: border-color var(--dur-theme) var(--ease-in-out);
 }
-.recognition { color: var(--accent); }
+.recognition { color: var(--p-accent, var(--accent)); }
 .meta {
   margin: 0;
   display: grid;
@@ -159,7 +159,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--p-accent, var(--accent));
   animation: pulse 2.4s ease-out infinite;
 }
 @keyframes pulse {

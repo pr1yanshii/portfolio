@@ -47,7 +47,7 @@
   top: 50%;
   width: 47%;
   height: 1px;
-  background: linear-gradient(to right, var(--accent), transparent);
+  background: linear-gradient(to right, var(--p-accent, var(--accent)), transparent);
   transform-origin: left center;
   transform: rotate(-38deg);
 }
@@ -61,8 +61,8 @@
   transform: translate(-50%, -50%);
 }
 .pinNear {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--p-accent, var(--accent));
+  border-color: var(--p-accent, var(--accent));
 }
 .radarLabel {
   position: absolute;
@@ -115,10 +115,10 @@
 .avatar {
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--bg-3);
+  background: var(--p-deep, var(--bg-3));
   transition: background-color var(--dur-theme) var(--ease-in-out);
 }
-.row:nth-of-type(2) .avatar { background: var(--bg-2); }
+.row:nth-of-type(2) .avatar { background: var(--p-tint, var(--bg-2)); }
 .name { font-weight: 500; }
 .sub { color: var(--ink-3); font-size: 0.85em; display: block; }
 .dist {
@@ -126,7 +126,7 @@
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-.arrow { color: var(--accent); padding-left: 0.3em; display: inline-block; }
+.arrow { color: var(--p-accent, var(--accent)); padding-left: 0.3em; display: inline-block; }
 .cta {
   margin-top: 0.3em;
   background: var(--ink);

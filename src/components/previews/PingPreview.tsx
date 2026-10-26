@@ -35,7 +35,7 @@ export function PingPreview() {
             style={{ left: `${p.x}%`, top: `${p.y}%` }}
           />
         ))}
-        <span className={s.radarLabel}>Range · illustrative</span>
+        <span className={s.radarLabel}>Range</span>
       </div>
 
       <div className={s.panel}>

@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react';
+import { Fragment, useRef, type CSSProperties } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 import type { Project } from '../content/projects';
 import { Preview, ShowUpPreview, type ShowUpScreen } from './previews';
@@ -24,6 +24,12 @@ export function ProjectEntry({ project, index }: Props) {
   const number = String(index + 1).padStart(2, '0');
   const external = !!project.href?.startsWith('http');
   const ext = external ? { target: '_blank', rel: 'noopener noreferrer' as const } : {};
+  // the project's colour world — previews and marks inherit it
+  const palette = {
+    '--p-accent': project.palette.accent,
+    '--p-tint': project.palette.tint,
+    '--p-deep': project.palette.deep,
+  } as CSSProperties;
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const numY = useSpring(useTransform(scrollYProgress, [0, 1], [reduced ? 0 : 70, reduced ? 0 : -70]), { stiffness: 80, damping: 26 });
@@ -127,7 +133,7 @@ export function ProjectEntry({ project, index }: Props) {
       </div>
     );
     return (
-      <article ref={ref} className={`grid ${styles.entry} ${styles.showcase}`} id={`work-${project.slug}`} aria-labelledby={`work-${project.slug}-title`}>
+      <article ref={ref} style={palette} className={`grid ${styles.entry} ${styles.showcase}`} id={`work-${project.slug}`} aria-labelledby={`work-${project.slug}-title`}>
         <div className={styles.showText}>{text}</div>
         <div className={styles.showStageCol}>
           <motion.span className={`${styles.numeral} ${styles.showNumeral}`} style={{ y: numY }} aria-hidden="true">
@@ -146,6 +152,7 @@ export function ProjectEntry({ project, index }: Props) {
   return (
     <article
       ref={ref}
+      style={palette}
       className={`grid ${styles.entry}`}
       data-layout={project.layout}
       data-flip={project.flip ? 'true' : undefined}

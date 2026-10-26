@@ -8,7 +8,6 @@ export function DesignerPlusPreview() {
         <div className={s.bar}>
           <span className={s.label}>designer+</span>
           <span className={s.muted}>PowerPoint add-in</span>
-          <span className={s.muted} style={{ marginLeft: 'auto' }}>Illustrative</span>
         </div>
         <div className={s.deck}>
           <div className={s.slides}>
