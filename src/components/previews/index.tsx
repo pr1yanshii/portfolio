@@ -3,6 +3,8 @@ import { AtelierPreview } from './AtelierPreview';
 import { SourceryPreview } from './SourceryPreview';
 import { PlantFinderPreview } from './PlantFinderPreview';
 import { PingPreview } from './PingPreview';
+import { ErrandPreview } from './ErrandPreview';
+import { DesignerPlusPreview } from './DesignerPlusPreview';
 import { ShowUpPreview } from './ShowUpPreview';
 
 /** Designed placeholder compositions, keyed by project. Replaced by `image` when present. */
@@ -15,6 +17,8 @@ export function Preview({ kind }: { kind: VisualKind }) {
     case 'sourcery': return <SourceryPreview />;
     case 'raingarden': return <PlantFinderPreview />;
     case 'ping': return <PingPreview />;
+    case 'errand': return <ErrandPreview />;
+    case 'designerplus': return <DesignerPlusPreview />;
     case 'showup': return <ShowUpPreview screen="feed" />;
   }
 }

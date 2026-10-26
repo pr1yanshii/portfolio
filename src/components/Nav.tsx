@@ -9,10 +9,9 @@ interface Props {
   active: SectionId;
   lenis: RefObject<Lenis | null>;
   visible: boolean;
-  onEnterLab: () => void;
 }
 
-export function Nav({ active, lenis, visible, onEnterLab }: Props) {
+export function Nav({ active, lenis, visible }: Props) {
   const [open, setOpen] = useState(false);
   const current = sections.find((s) => s.id === active);
 
@@ -62,12 +61,6 @@ export function Nav({ active, lenis, visible, onEnterLab }: Props) {
             ))}
           </nav>
 
-          <button className={styles.lab} onClick={onEnterLab}>
-            <span className={styles.labDot} aria-hidden="true" />
-            <span>Enter the Lab</span>
-            <span className={styles.labArrow} aria-hidden="true">↗</span>
-          </button>
-
           <button className={`micro ${styles.toggle}`} onClick={() => setOpen((o) => !o)} aria-expanded={open} aria-controls="site-index">
             {open ? 'Close' : 'Index'}
           </button>
@@ -88,11 +81,6 @@ export function Nav({ active, lenis, visible, onEnterLab }: Props) {
               </li>
             ))}
           </ol>
-          <button className={styles.indexLab} onClick={() => { setOpen(false); onEnterLab(); }} tabIndex={open ? 0 : -1}>
-            <span className={styles.labDot} aria-hidden="true" />
-            Enter the Lab <span aria-hidden="true">↗</span>
-          </button>
-
           <div className={`micro ${styles.indexFoot}`}>
             <span>{site.location}</span>
             <a href={`mailto:${site.links.email}`} tabIndex={open ? 0 : -1}>Email</a>

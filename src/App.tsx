@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import { AnimatePresence } from 'motion/react';
 import { useLenis, scrollToId } from './hooks/useLenis';
+import { AnimatePresence } from 'motion/react';
 import { useHashRoute } from './hooks/useHashRoute';
-import { Lab } from './lab/Lab';
+import { Archive } from './archive/Archive';
 import { useSectionTheme } from './hooks/useSectionTheme';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useReveal } from './hooks/useReveal';
@@ -21,20 +21,20 @@ export default function App() {
   const onDone = useCallback(() => setEntered(true), []);
 
   const [route, go] = useHashRoute();
-  const inLab = route === 'lab';
+  const inArchive = route === 'archive';
 
   // The portfolio's scroll + observers pause while the Lab is open.
-  const lenis = useLenis(entered && !inLab);
+  const lenis = useLenis(entered && !inArchive);
   useSectionTheme(entered);
   useReveal(entered);
   const active = useActiveSection(entered);
 
   // Handle a hash on load (e.g. /#work) once everything is mounted
   useEffect(() => {
-    if (!entered || inLab || !location.hash || location.hash.startsWith('#/')) return;
+    if (!entered || inArchive || !location.hash || location.hash.startsWith('#/')) return;
     const el = document.querySelector(location.hash);
     el?.scrollIntoView();
-  }, [entered, inLab]);
+  }, [entered, inArchive]);
 
   // Route every in-page anchor (scroll cue, back-to-top, …) through Lenis
   useEffect(() => {
@@ -55,8 +55,8 @@ export default function App() {
   return (
     <>
       <Loader onDone={onDone} />
-      {!inLab && <Cursor />}
-      <Nav active={active} lenis={lenis} visible={entered && !inLab} onEnterLab={() => go('lab')} />
+      {!inArchive && <Cursor />}
+      <Nav active={active} lenis={lenis} visible={entered && !inArchive} />
       <main>
         <Hero />
         <Experience />
@@ -67,8 +67,9 @@ export default function App() {
       </main>
 
       <AnimatePresence>
-        {inLab && <Lab key="lab" onExit={() => go('home')} />}
+        {inArchive && <Archive key="archive" onExit={() => go('home')} />}
       </AnimatePresence>
+
     </>
   );
 }

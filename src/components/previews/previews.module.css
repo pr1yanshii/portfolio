@@ -357,3 +357,105 @@
   font-weight: 500;
   color: var(--ink);
 }
+
+/* --- errand: conversational shopping with an approval step --- */
+.thread {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;   /* a conversation settles at the bottom */
+  gap: 0.7em;
+  padding: 1.1em 1.3em;
+  min-height: 0;
+  overflow: hidden;
+}
+.msg {
+  max-width: 76%;
+  padding: 0.6em 0.85em;
+  border-radius: 0.9em;
+  line-height: 1.35;
+}
+.msgUser {
+  align-self: flex-end;
+  background: var(--ink);
+  color: var(--bg);
+  border-bottom-right-radius: 0.2em;
+}
+.msgBot {
+  align-self: flex-start;
+  background: var(--bg-2);
+  border-bottom-left-radius: 0.2em;
+  transition: background-color var(--dur-theme) var(--ease-in-out);
+}
+.buy {
+  align-self: flex-start;
+  width: 82%;
+  border: 1px solid var(--line);
+  border-radius: 0.6em;
+  padding: 0.7em 0.85em;
+  display: grid;
+  grid-template-columns: 2.4em 1fr auto;
+  gap: 0.8em;
+  align-items: center;
+  background: var(--bg);
+  transition: background-color var(--dur-theme) var(--ease-in-out);
+}
+.buyThumb { aspect-ratio: 1; border-radius: 0.3em; background: var(--bg-3); }
+.buyName { font-weight: 500; }
+.buyMeta { color: var(--ink-3); font-size: 0.9em; }
+.buyPrice { font-variant-numeric: tabular-nums; font-weight: 500; }
+.approve {
+  align-self: flex-start;
+  width: 82%;
+  margin-top: 0.1em;
+  border: 1px dashed var(--line-strong);
+  border-radius: 0.6em;
+  padding: 0.7em 0.85em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.approveTop { display: flex; justify-content: space-between; align-items: baseline; }
+.approveBtns { display: flex; gap: 0.4em; }
+.approveYes {
+  background: var(--ink); color: var(--bg);
+  padding: 0.35em 0.9em; border-radius: 0.4em; font-weight: 500;
+}
+.approveNo {
+  border: 1px solid var(--line-strong);
+  padding: 0.35em 0.9em; border-radius: 0.4em; color: var(--ink-2);
+}
+.limitBar {
+  height: 3px; border-radius: 2px; background: var(--bg-3); position: relative; overflow: hidden;
+  transition: background-color var(--dur-theme) var(--ease-in-out);
+}
+.limitBar::after { content: ''; position: absolute; inset: 0 62% 0 0; background: var(--accent); }
+
+/* --- designer+: add-in pane beside slides --- */
+.deck { flex: 1; display: grid; grid-template-columns: 1fr 10.5em; min-height: 0; }
+.slides {
+  display: flex; flex-direction: column; gap: 0.6em;
+  padding: 1em; border-right: 1px solid var(--line); min-height: 0; overflow: hidden;
+}
+.slideMain {
+  flex: 1; border: 1px solid var(--line); border-radius: 0.3em;
+  display: flex; flex-direction: column; justify-content: center; gap: 0.5em;
+  padding: 1.2em; min-height: 0;
+}
+.slideTitle { font-size: 1.5em; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+.slideRule { height: 2px; width: 2.5em; background: var(--accent); }
+.slideLine { height: 0.45em; border-radius: 2px; background: var(--bg-3); }
+.strip { display: flex; gap: 0.4em; }
+.thumbSlide {
+  flex: 1; aspect-ratio: 16/10; border: 1px solid var(--line); border-radius: 0.2em; background: var(--bg);
+}
+.thumbOn { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.pane { padding: 1em 0.9em; display: flex; flex-direction: column; gap: 0.6em; min-height: 0; }
+.paneOpt {
+  border: 1px solid var(--line); border-radius: 0.4em; padding: 0.5em;
+  display: flex; flex-direction: column; gap: 0.3em;
+}
+.paneOptOn { border-color: var(--ink); }
+.paneBar { height: 0.4em; border-radius: 2px; background: var(--bg-3); }
+.paneBarInk { background: var(--ink); width: 60%; }
+.paneBarAccent { background: var(--accent); width: 35%; }

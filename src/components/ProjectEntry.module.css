@@ -110,8 +110,11 @@
   color: var(--ink-2);
 }
 .dot {
-  padding-inline: 0.6em;
   opacity: 0.5;
+}
+/* each label stays whole; the separator's spaces give the line a place to break */
+.label {
+  white-space: nowrap;
 }
 .result {
   font-size: var(--text-small);

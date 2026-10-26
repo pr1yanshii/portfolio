@@ -19,6 +19,14 @@ export function Work() {
           ))}
         </div>
 
+        <div className={styles.explore} data-reveal>
+          <a href="#/archive" className={styles.exploreBtn}>
+            Explore all projects
+            <span className={styles.exploreArrow} aria-hidden="true">→</span>
+          </a>
+          <span className={`micro ${styles.exploreNote}`}>The Build Archive</span>
+        </div>
+
         <div className={styles.earlier}>
           <p className={`micro ${styles.earlierLabel}`} data-reveal>Earlier work</p>
           <ul>

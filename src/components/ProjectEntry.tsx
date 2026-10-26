@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 import type { Project } from '../content/projects';
 import { Preview, ShowUpPreview, type ShowUpScreen } from './previews';
@@ -22,6 +22,8 @@ export function ProjectEntry({ project, index }: Props) {
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const number = String(index + 1).padStart(2, '0');
+  const external = !!project.href?.startsWith('http');
+  const ext = external ? { target: '_blank', rel: 'noopener noreferrer' as const } : {};
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
   const numY = useSpring(useTransform(scrollYProgress, [0, 1], [reduced ? 0 : 70, reduced ? 0 : -70]), { stiffness: 80, damping: 26 });
@@ -67,10 +69,10 @@ export function ProjectEntry({ project, index }: Props) {
 
       <p className={`micro ${styles.labels}`} data-reveal style={delay(140)}>
         {project.labels.map((l, i) => (
-          <span key={l}>
-            {l}
-            {i < project.labels.length - 1 && <span className={styles.dot} aria-hidden="true">·</span>}
-          </span>
+          <Fragment key={l}>
+            <span className={styles.label}>{l}</span>
+            {i < project.labels.length - 1 && <span className={styles.dot} aria-hidden="true"> · </span>}
+          </Fragment>
         ))}
       </p>
 
@@ -155,7 +157,7 @@ export function ProjectEntry({ project, index }: Props) {
           {number}
         </motion.span>
         {project.href ? (
-          <a href={project.href} className={styles.visualLink} data-cursor="view" tabIndex={-1} aria-hidden="true">
+          <a href={project.href} {...ext} className={styles.visualLink} data-cursor="view" tabIndex={-1} aria-hidden="true">
             {visual}
           </a>
         ) : (

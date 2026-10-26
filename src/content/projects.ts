@@ -5,7 +5,7 @@
  * and the designed placeholder (`visual`) is ignored.
  * `layout` + `flip` control the composition; alternate them down the page.
  */
-export type VisualKind = 'atelier' | 'sourcery' | 'raingarden' | 'showup' | 'ping';
+export type VisualKind = 'atelier' | 'sourcery' | 'raingarden' | 'showup' | 'ping' | 'errand' | 'designerplus';
 /** showcase = full-width editorial screen showcase (for consumer products) */
 export type ProjectLayout = 'wide' | 'split' | 'compact' | 'showcase';
 
@@ -25,10 +25,25 @@ export interface Project {
   visual: VisualKind;
   image?: string;        // e.g. '/images/atelier/cover.png'
   images?: string[];     // showcase layout: several portrait screens, e.g. ['/images/showup/feed.png', …]
-  href?: string;         // project page — omit to hide "View project"
+  href?: string;         // project or demo link — omit to hide it. http(s) opens in a new tab.
+  linkLabel?: string;    // link text, defaults to "View project"
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'errand',
+    title: 'Errand',
+    tagline: 'An assistant that can spend \u2014 inside limits you set.',
+    description:
+      'A conversational shopping assistant built on agentic commerce. It finds what you asked for and can pay for it through Stripe, within spending controls, and never without your approval.',
+    contribution: 'Product Strategy & Full-Stack Development',
+    labels: ['Next.js', 'TypeScript', 'Stripe', 'Gemini', 'Supabase'],
+    year: '2026',
+    layout: 'wide',
+    visual: 'errand',
+    href: 'https://errand-khaki.vercel.app',
+    linkLabel: 'Live demo',
+  },
   {
     slug: 'showup',
     title: 'Show Up',
@@ -41,6 +56,29 @@ export const projects: Project[] = [
     layout: 'showcase',
     visual: 'showup',
     // images: ['/images/showup/feed.png', '/images/showup/event.png', '/images/showup/filters.png'],
+  },
+  {
+    slug: 'designer-plus',
+    title: 'designer+',
+    description:
+      'A PowerPoint add-in for exploring slide design without leaving the deck you are already working in.',
+    contribution: 'Product Design & Engineering',
+    labels: ['TypeScript', 'Office.js', 'PowerPoint', 'Gemini'],
+    status: 'In development',
+    year: '2026',
+    layout: 'split',
+    flip: true,
+    visual: 'designerplus',
+  },
+  {
+    slug: 'raingarden',
+    title: 'Rain Garden',
+    description: 'Turned structured plant and location data into a searchable, filterable web experience.',
+    contribution: 'Data modeling, import, search and interface',
+    labels: ['Laravel', 'Data', 'UI'],
+    year: '2025',
+    layout: 'compact',
+    visual: 'raingarden',
   },
   {
     slug: 'ping',
@@ -81,16 +119,6 @@ export const projects: Project[] = [
     flip: true,
     visual: 'sourcery',
   },
-  {
-    slug: 'raingarden',
-    title: 'Rain Garden',
-    description: 'Turned structured plant and location data into a searchable, filterable web experience.',
-    contribution: 'Data modeling, import, search and interface',
-    labels: ['Laravel', 'Data', 'UI'],
-    year: '2025',
-    layout: 'compact',
-    visual: 'raingarden',
-  }
 ];
 
 /**
